@@ -1,2 +1,1 @@
-# vadimhtml.ru
-vadimhtml.ru
+# [http://vadimhtml.ru](vadimhtml.ru)
