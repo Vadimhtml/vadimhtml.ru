@@ -6,7 +6,9 @@ var gulp = require('gulp'),
     gulpJade = require('gulp-jade'),
     gulpConcat = require('gulp-concat'),
     gulpPrompt = require('gulp-prompt'),
-    gulpFtp = require('gulp-ftp');
+    gulpFtp = require('gulp-ftp'),
+    gulpCleanCss = require('gulp-clean-css'),
+    gulpAutoprefixer = require('gulp-autoprefixer');
 
 function errorLog(err) {
     gulpUtil.log(gulpUtil.colors.bgRed.white.bold(' Error: '), gulpUtil.colors.red(err.message))
@@ -21,7 +23,8 @@ gulp.task('less', function () {
     return gulp.src('./src/**/*.less')
         .pipe(gulpLess())
         .on('error', errorLog)
-        .pipe(gulpMyth({compress: true}))
+        .pipe(gulpAutoprefixer())
+        .pipe(gulpCleanCss())
         .pipe(gulp.dest('./build'));
 });
 
