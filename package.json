@@ -4,6 +4,7 @@
     "gulp": "^3.9.1",
     "gulp-clean-css": "^3.9.2",
     "gulp-concat": "^2.6.1",
+    "gulp-google-webfonts": "^1.0.0",
     "gulp-myth": "^1.1.0",
     "gulp-postcss": "^7.0.1",
     "gulp-pug": "^3.3.0",

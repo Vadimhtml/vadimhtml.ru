@@ -100,3 +100,13 @@ gulp.task('reload', wrapPipe(function (success, error) {
     browserSync.reload();
     success();
 }));
+
+var googleWebFonts = require('gulp-google-webfonts');
+
+var options = {};
+
+gulp.task('gfonts', function () {
+    return gulp.src('./fonts.list')
+        .pipe(googleWebFonts(options))
+        .pipe(gulp.dest('./docs'));
+});
