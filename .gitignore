@@ -1,4 +1,4 @@
-/build
+/ui-kit/**/*.css
 /node_modules
 .idea
 
