@@ -1,12 +1,25 @@
-image: ubuntu:18.04
-
-before_script:
-  - apt-get update -qy
-  - apt-get install -y lftp
+stages:
+  - deploy
+  - notify
 
 deploy:
+  image: ubuntu:18.04
+  stage: deploy
+
+  before_script:
+    - apt-get update -qy
+    - apt-get install -y lftp
+
+  script:
+    - lftp -e "open 31.41.41.1; user $FTP_USERNAME $FTP_PASSWORD; mirror -X .* -X .*/ --reverse --verbose --delete docs/ www/vadimhtml.ru/; bye"
+    - sh .ci-notify.sh ✅
+
   only:
     refs:
       - master
+
+notify_error:
+  stage: notify
   script:
-    - lftp -e "open 31.41.41.1; user $FTP_USERNAME $FTP_PASSWORD; mirror -X .* -X .*/ --reverse --verbose --delete docs/ www/vadimhtml.ru/; bye"
+    - sh .ci-notify.sh ❌
+  when: on_failure #deploy fail
