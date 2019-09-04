@@ -9,6 +9,7 @@ deploy:
   before_script:
     - apt-get update -qy
     - apt-get install -y lftp
+    - apt-get install -y curl
 
   script:
     - lftp -e "open 31.41.41.1; user $FTP_USERNAME $FTP_PASSWORD; mirror -X .* -X .*/ --reverse --verbose --delete docs/ www/vadimhtml.ru/; bye"
