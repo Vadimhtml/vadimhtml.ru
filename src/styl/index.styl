@@ -1,0 +1,101 @@
+$color_light = #fff
+$color_dark = #282923
+$font_light = #444
+$font_dark = #bbb
+
+
+html,
+.bodyMain
+  border 0
+  margin 0
+  padding 0
+
+
+@media (prefers-color-scheme light)
+  html,
+  .bodyMain
+    background-color $color_light
+
+  .bodyMain
+    color $font_light
+
+
+@media (prefers-color-scheme dark)
+  html,
+  .bodyMain
+    background-color $color_dark
+
+  .bodyMain
+    color $font_dark
+
+
+.bodyMain
+  overflow hidden
+  font-family 'Open Sans', sans-serif
+  font-weight 300
+
+  &__tagLine
+    cursor pointer
+    display block
+    font-size 64px
+    font-weight inherit
+    height 100px
+    left 0
+    line-height 100px
+    margin -50px 0 0 0
+    position absolute
+    right 0
+    text-align center
+    top 50%
+    -webkit-touch-callout none
+    user-select none
+    transition color .3s linear .6s
+    -webkit-tap-highlight-color transparent
+
+
+@keyframes flip
+
+  from
+    transform perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0) rotate3d(0, 1, 0, -360deg)
+    animation-timing-function ease-out
+
+  40%
+    transform perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -190deg)
+    animation-timing-function ease-out
+
+  50%
+    transform perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -170deg)
+    animation-timing-function ease-in
+
+  80%
+    transform perspective(400px) scale3d(0.95, 0.95, 0.95) translate3d(0, 0, 0) rotate3d(0, 1, 0, 0deg)
+    animation-timing-function ease-in
+
+  to
+    transform perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0) rotate3d(0, 1, 0, 0deg)
+    animation-timing-function ease-in
+
+
+.flip
+  animation-duration 1s
+  animation-name flip
+  backface-visibility visible
+  animation-fill-mode both
+
+
+@keyframes rainbow
+
+  20%
+    color red
+
+  40%
+    color yellow
+
+  60%
+    color green
+
+  80%
+    color blue
+
+  100%
+    color orange
